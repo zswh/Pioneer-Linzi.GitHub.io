@@ -1,17 +1,45 @@
-<html>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <header>
 <title>众舍文化传播</title>
+		<script type="text/javascript" src="story/jquery.js"></script>
 <style>
 .main{
 	border:1px solid red;
-	width:300px;
+	width:450px;
 	height:500px;
 	margin:120px auto;
+	text-align:center;
+}
+.main >div{
+	margin-top:10px;
+}
+label{
+display:inline-block;
+width:100px;
+text-align:right;
+}
+button{
+margin:0 auto;
 }
 </style>
 </header>
 <body>
 <div class="main">
+	<div><label for="customer">客户名：</label> <input id="customer" type="text"> </div>
+	<div><label for="salesman">业务员：</label> <input id="salesman" type="text"> </div>
+	<div><label for="begintime">相识时间：</label> <input id="begintime" type="text"placeholder="时间格式为:年-月-日-小时-分钟-秒"></div>
+	<div><button id="genLink">生成链接</button> </div>
 </div>
+<script>
+$("#genLink").click(function(){
+var customer=$("#customer").val();
+var salesman=$("#salesman").val();
+var begintime=$("#begintime").val();
+
+var url="https://zswh.github.io/show.html?customer="+customer+"&salesman="+salesman+"&begintime="+begintime;
+var enurl=encodeURIComponent(url);
+window.open(enurl);
+});
+</script>
 </body>
 </html>
