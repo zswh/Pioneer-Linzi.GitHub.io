@@ -36,7 +36,7 @@ var salesman=$("#salesman").val();
 var begintime=$("#begintime").val();
 
 var url="show.html?customer="+customer+"&salesman="+salesman+"&begintime="+begintime;
-var enurl=encodeURIComponent(url);
+var enurl=encodeURI(url);
 window.open(enurl);
 });
 </script>
