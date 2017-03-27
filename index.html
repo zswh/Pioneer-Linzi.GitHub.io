@@ -29,7 +29,7 @@
 			        <div id="code">
 			        	<span class="say"> Our Story</span><br>
 						<span class="say"> </span><br>
-			        	<span class="say"> For  小诺 & 尹杰 </a></span><br>
+			        	<span class="say"> For  <span class="customer">小诺 </span> & <span class="salesman">尹杰</span> </a></span><br>
 						<span class="say"> </span><br>
                         <span class="say"> 还记得我们相识的时候吗, 或许是缘分，或许是注定的。</span><br>
 						<span class="say"> </span><br>
@@ -45,11 +45,11 @@
                         <span class="say"> </span><br>
                         <span class="say"> 感谢您对我工作的支持</span><br>
 						<span class="say"> </span><br>
-                        <span class="say"><span class="space"></span>上海众舍文化传播 ~ 尹杰 </span>
+                        <span class="say"><span class="space"></span>上海众舍文化传播 ~ <span class="salesman">尹杰</span> </span>
 			        </div>
                 </div>
                 <div id="clock-box">
-                    小诺 <span class="STYLE1">与</span> 尹杰 <span class="STYLE1">已经相识了</span>
+			<span class="customer">小诺</span> <span class="STYLE1">与</span> <span class="salesman">尹杰</span> <span class="STYLE1">已经相识了</span>
                   <div id="clock"></div>
               </div>
                 <canvas id="canvas" width="1100" height="680"></canvas>
@@ -61,7 +61,47 @@
     </script>
 
     <script>
-    (function(){
+
+      var args = function(params){
+             
+            var a = {};
+             
+            params = params || location.search;
+             
+            if(!params) return {};
+             
+            params = decodeURI(params);
+             
+            params.replace(/(?:^\?|&)([^=&]+)(?:\=)([^=&]+)(?=&|$)/g,function(m,k,v){  a[k] = v; });
+             
+            return a;
+             
+        };
+
+    (function(){ 
+	    var arg = args();
+           
+            console.log(arg);
+
+	    if(arg.begintime==null){
+		    arg.begintime='2016-06-01-0-0-0';
+	    }
+	    var time=arg.begintime.split('-');
+	    var info={
+	    year:parseInt(time[0])||2016,
+	    mouth:parseInt(time[1])-1||6,
+	    day:parseInt(time[2])||1,
+	    hour:parseInt(time[3])||0,
+	    minute:parseInt(time[4])||0,
+	    sec:parseInt(time[5])||0,
+	    customer:arg.customer||"尊敬的客户",
+	    salesman:arg.salesman||"尹杰",
+	   
+	    }
+
+	   $(".customer").text(info.customer); 
+	   $(".salesman").text(info.salesman);
+	
         var canvas = $('#canvas');
 		
         if (!canvas[0].getContext) {
@@ -191,10 +231,10 @@
 
         var textAnimate = eval(Jscex.compile("async", function () {
 		    var together = new Date();
-		    together.setFullYear(2016,5,17); 			//时间年月日
-		    together.setHours(09);						//小时	
-		    together.setMinutes(15);					//分钟
-		    together.setSeconds(0);					//秒前一位
+		    together.setFullYear(info.year,info.mouth,info.day); 			//时间年月日
+		    together.setHours(info.hour);						//小时	
+		    together.setMinutes(info.minute);					//分钟
+		    together.setSeconds(info.sec);					//秒前一位
 		    together.setMilliseconds(0);				//秒第二位
 
 		    $("#code").show().typewriter();
