@@ -89,7 +89,7 @@
 	    var time=arg.begintime.split('-');
 	    var info={
 	    year:parseInt(time[0])||2016,
-	    mouth:time[1]==null||time[1]==undefined?0:parseInt(time[1]),
+	    mouth:time[1]==null||time[1]==undefined?0:parseInt(time[1]-1),
 	    day:parseInt(time[2])||1,
 	    hour:parseInt(time[3])||0,
 	    minute:parseInt(time[4])||0,
