@@ -4,7 +4,9 @@
 <header>
 <title>众舍文化传播</title>
 <link href="http://cdn.bootcss.com/twitter-bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet">
+<link href="./jedate/skin/jedate.css" rel="stylesheet">
 <script type="text/javascript" src="story/jquery.js"></script>
+<script src="./jedate/jquery.jedate.min.js"></script>
 <style>
 .main{
 margin:0 auto;
@@ -74,6 +76,15 @@ display:inline-block;
 
 
 <script>
+$(function(){
+$("#begintime").jeDate({
+    format:"YYYY-MM-DD",
+    isTime:false, 
+    minDate:"2014-09-19 00:00:00"
+})
+
+});
+
 $("#genLink").click(function(){
 		var customer=$("#customer").val();
 		var salesman=$("#salesman").val();
