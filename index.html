@@ -82,9 +82,6 @@ $("#begintime").jeDate({
     isTime:false, 
     minDate:"2014-09-19 00:00:00"
 })
-
-});
-
 $("#genLink").click(function(){
 		var customer=$("#customer").val();
 		var salesman=$("#salesman").val();
@@ -92,8 +89,10 @@ $("#genLink").click(function(){
 
 		var url="show.html?customer="+customer+"&salesman="+salesman+"&begintime="+begintime;
 		var enurl=encodeURI(url);
-		window.location.herf=enurl;
+		window.location.href=enurl;
 		});
+});
+
 </script>
 </body>
 </html>
